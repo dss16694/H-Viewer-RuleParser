@@ -27,7 +27,9 @@ jobs:
       with:
         java-version: '17.0.11'
         distribution: 'temurin'
-        cache: 'none' 
+        cache: 'none' # 禁用缓存以确保重新下载依赖项
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
