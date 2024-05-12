@@ -22,14 +22,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 17.0.11
+    - name: Set up JDK 8
       uses: actions/setup-java@v3
       with:
-        java-version: '17.0.11'
+        java-version: '8'
         distribution: 'temurin'
-        cache: 'none' # 禁用缓存以确保重新下载依赖项
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+        cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
